@@ -46,51 +46,60 @@ t_list *push_front(int value, t_list *check)
 	return (new_node);
 }
 
-t_list *reverse_rotate_list_tail_becomes_head(t_list *check)
-{
-	t_list *tmp;
-	tmp = check;
+// t_list *push_centr(int value, t_list *check)
+// {
+// 	t_list *new_node;
+// 	t_list *tmp = check;
+// 	if (!(new_node = (t_list *)malloc(sizeof(t_list))))
+// 		return (NULL);
+// 	new_node->value = value; //50
+// 	while (new_node->value < tmp->value || tmp->next != NULL)
+// 	{
+// 		tmp = tmp->next; //145
+// 	}
+
+// 	new_node->value = value; //50
+// 	new_node->prev = tmp->prev;//30
+// 	new_node->next = tmp;//145
+// 	tmp->prev->next = new_node;
+// 	tmp->prev = new_node;
+
+// 	return (new_node);
+// }
+
+// void *swap_nodes(int value, t_list *check)
+// {
+// 	t_list *tmp = check;
+
+// 	while (tmp)
+// 	{
+// 		tmp = tmp->next;
+// 	}
 	
-	while (tmp->next)
-		tmp = tmp->next;
-	int c = tmp->value;
-	check = push_front(c, check);
+// 	tmp->prev->next = NULL;
+// 	tmp->prev
+	
+// 	tmp->prev = tmp->prev->prev;
+// 	tmp->next = tmp->prev;
+// }
 
-	tmp->prev->next = NULL;
-	free (tmp); 
-	return (check);	
-}
 
-t_list *rotate_list_head_becomes_tail(t_list *check)
-{
-	t_list *tmp;
-	tmp = check;
-	int c = tmp->value;
-	while (tmp->next)
-		tmp = tmp->next;
-	push_back(c, tmp);
+// t_list *swap_nodes_sanya(t_list *check)
+// {
+// 	t_list *tmp = check;
+// 	t_list *c = tmp;
 
-	tmp = check;
-	tmp->next->prev = NULL;
-	tmp = check->next;
-	free (check); 
-	check = tmp;
-	return (check);	
-}
+// 	while (tmp)
+// 	{
+// 		tmp = tmp->next;
+// 		c = tmp->prev;
+// 	}
+// 	printf("tmp - %d\n", tmp->value);
+// 	printf("c - %d\n", c->value);
+// 	return(tmp);
+// }
 
-void swap_list(t_list *check)
-{
-	t_list *tmp;
-	tmp = check;
-	int c;
-
-	while (tmp->next)
-		tmp = tmp->next;
-
-	c = check->value;
-	tmp->value = tmp->prev->value;
-	tmp->prev->value = c;
-}
+// pop_back && pop_front почитать Грокаем алгоритмы (первые главы 3, до хэш таблиц, не включая)
 
 int ft_isspace(int c)
 {
@@ -178,7 +187,22 @@ int main(int ac, char **av)
 	printf("\n");
 	i = 0;
 	check = ft_lstnew(number[i + 1]);
+	// tmp = check;
+	// while (tmp)
+	// {
+	// 	printf("a- %d", tmp->value);
+	// 	tmp = tmp->next;
+	// }
+	// printf("\n");
+	i = 0;
 	push_back(number[i + 2], check);
+	// tmp = check;
+	// while (tmp)
+	// {
+	// 	printf("B- %d ", tmp->value);
+	// 	tmp = tmp->next;
+	// }
+	// printf("\n");
 	check = push_front(number[i], check);
 	tmp = check;
 	while (tmp)
@@ -187,15 +211,19 @@ int main(int ac, char **av)
 		tmp = tmp->next;
 	}
 	printf("\n");
-
-	//swap_list(check);
-	//check = rotate_list_head_becomes_tail(check);
-	//check = reverse_rotate_list_tail_becomes_head(check);
+	i = 0;
+	//push_centr(155, check);
+	// printf("Order of Sorted elements: ");
+	// for (i = 0; i < count; i++)
+	//printf("c - %d\n", c->value);
 	tmp = check;
 	while (tmp)
 	{
 		printf("D- %d ", tmp->value);
 		tmp = tmp->next;
 	}
+
+	//printf(" %d", check->value);
+
 	return 0;
 }
