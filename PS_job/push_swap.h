@@ -39,7 +39,7 @@ t_list	*stack_top(t_list *check);
 void ft_pop_back(t_list **check);
 t_ps *ft_stuct_init(t_ps *main_struct, t_list **check);
 void ft_push_b(t_list **st_a, t_list **st_b);
-void ft_push_a(t_list **st_a, t_list **st_b);
+void ft_push_a(t_list **st_a, t_list **st_b, int i);
 void ft_free_list(t_list *check);
 // написать функцию очистки листов.
 void ft_one_sort(t_ps *main_struct);

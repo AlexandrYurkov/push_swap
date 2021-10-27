@@ -149,13 +149,13 @@ void ft_in_order(t_list *check, int *sorted_mass) // запись order
 	}
 }
 
-void ft_push_a(t_list **st_a, t_list **st_b)//pa
+void ft_push_a(t_list **st_a, t_list **st_b, int i)//pa
 {
 	t_list *tmp;
 	tmp = *st_b;
 	t_list *tmp_a;
 
-	if(*st_a == NULL)
+	if(*st_a == NULL)// ! может ли стек_а быть пустым?
 	{
 		(*st_a) = ft_lstnew(tmp->value);
 		(*st_a)->count = 1;
@@ -165,8 +165,19 @@ void ft_push_a(t_list **st_a, t_list **st_b)//pa
 	}
 	else
 	{
-		push_back(tmp->value, *st_a);
-		tmp_a = stack_top(*st_a);
+		if(i == 1)
+		{
+			printf("я тут!\n");
+			push_back(tmp->value, *st_a);
+			tmp_a = stack_top(*st_a);
+			//записать ra + pa массив
+		}
+		else
+		{
+			push_front(tmp->value, *st_a);
+			tmp_a = (*st_a);
+			//записать pa массив
+		}
 		tmp_a->count += 1;
 		tmp_a->sort = tmp->sort;
 		tmp_a->order =tmp->order;

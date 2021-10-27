@@ -57,9 +57,7 @@ int main(int ac, char **av)
    
     ft_one_sort(main_struct);
     ft_print(main_struct);
-    tmp_a = main_struct->st_a;
-    tmp_b = main_struct->st_b;
-    ft_push_a(&tmp_a, &tmp_b);
+    ft_sort_stack_b(main_struct);
     main_struct->st_a = tmp_a;
     main_struct->st_b = tmp_b;
    // ft_sort_stack_b(main_struct);
