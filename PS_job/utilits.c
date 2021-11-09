@@ -11,3 +11,19 @@ int *ft_copi_mass(int *sorted_mass, int *number, int count)
     }
     return (sorted_mass);
 }
+
+int max_elem(t_list *check)
+{
+    t_list *tmp;
+    int i;
+    
+    tmp = check;
+    i = 0;
+    while (tmp)
+    {
+        if(tmp->order > i)
+            i = (int)tmp->order;
+        tmp = tmp->next;
+    }
+    return(i);
+}

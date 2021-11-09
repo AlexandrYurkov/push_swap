@@ -56,19 +56,23 @@ int main(int ac, char **av)
     // printf("\n");
    
     ft_one_sort(main_struct);
+    //ft_print(main_struct);
+    //ft_sort_stack_b(main_struct);
+    // main_struct->st_a = tmp_a;
+    // main_struct->st_b = tmp_b;
+    
     ft_print(main_struct);
+    printf("\n______________________\n");
     ft_sort_stack_b(main_struct);
-    main_struct->st_a = tmp_a;
-    main_struct->st_b = tmp_b;
-   // ft_sort_stack_b(main_struct);
+    printf("\n______________________\n");
     ft_print(main_struct);
     
        
-   ft_free_list(main_struct->st_a);//переписать функцию очистки структуры main_struct
+   ft_free_list(&main_struct->st_a);//переписать функцию очистки структуры main_struct
   //  ft_free_list(check);
    // ft_free_list(main_struct->st_b);
-    free(main_struct->mass_operat);
-    free(main_struct);
+    //free(main_struct->mass_operat);
+    //free(main_struct);
     free(check);
     free(number);
     free(sorted_mass);

@@ -102,32 +102,47 @@ void ft_one_sort(t_ps *main_struct)
 
 void ft_sort_stack_b(t_ps *main_struct)
 {
-	int max, i;
 	t_list *tmp;
+	int max, i;
+	int mid_b;
+	int check;
 
+	i = 0;
 	tmp = main_struct->st_b;
-	max = main_struct->mid;
-	main_struct->mid = ((max - main_struct->next_elem) / 2) + main_struct->next_elem;
-	i = count_check(tmp);
-	if (main_struct->mid > tmp->order)
+	check = tmp->sort;
+	//-3 1 0 3 4  2| \ / \  7 9 12 14
+	while (tmp)
 	{
-		if (tmp->order == main_struct->next_elem)
+		max = max_elem(tmp);
+		mid_b = ((max - main_struct->next_elem) / 2) + main_struct->next_elem;//5
+		
+		if (mid_b < tmp->order)
 		{
-			ft_push_a(&main_struct->st_a, &tmp, 1);
-			main_struct->next_elem = main_struct->next_elem + 1;
+			//printf("\n(mid_b < tmp->order) -> |value = %d| |order = %zu|", tmp->value, tmp->order);
+			if (tmp->sort < 3)
+			{
+				tmp->sort = tmp->sort + 1;
+				do_ra(&tmp);
+			}
+			else
+				ft_push_a(&main_struct->st_a, &tmp, 0);
 		}
-		ft_push_a(&main_struct->st_a, &tmp, 0);
+		else
+		{
+			//printf("\n|else -> value = %d| |order = %zu|", tmp->value, tmp->order);
+			if ((int)tmp->order == main_struct->next_elem)
+			{
+				ft_push_a(&main_struct->st_a, &tmp, 1);
+				//printf("\n|%zu| next_elen = %d", tmp->order, main_struct->next_elem);
+				main_struct->next_elem = main_struct->next_elem + 1;
+			}
+			else
+				ft_push_a(&main_struct->st_a, &tmp, 0);
+		}
+		
+		//printf("\n %d - %zu |max = %d| |mid_b = %d| |next_ elem = %d| |sort = %d|", i, tmp->order, max, mid_b, main_struct->next_elem, tmp->sort);
+		i++;
 	}
-	else
-	{
-		tmp->sort = tmp->sort + 1;
-		do_ra(&tmp);
-	}
-	main_struct->st_b = tmp;
-	printf("%d\n", i);
-	if (i)
-		ft_sort_stack_b(main_struct);
-	else
-		return;
-	
+
+	//ft_free_list(&main_struct->st_b);
 }

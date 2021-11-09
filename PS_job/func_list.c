@@ -154,17 +154,17 @@ void ft_push_a(t_list **st_a, t_list **st_b, int i)//pa
 	t_list *tmp;
 	tmp = *st_b;
 	t_list *tmp_a;
+	t_list *head = *st_a;
 
-	if(*st_a == NULL)// ! может ли стек_а быть пустым?
-	{
-		(*st_a) = ft_lstnew(tmp->value);
-		(*st_a)->count = 1;
-		(*st_a)->sort = tmp->sort;
-		(*st_a)->order =tmp->order;
-		(*st_a)->size = tmp->size;
-	}
-	else
-	{
+	// if(*st_a == NULL)// ! может ли стек_а быть пустым?
+	// {
+	// 	(*st_a) = ft_lstnew(tmp->value);
+	// 	(*st_a)->count = 1;
+	// 	(*st_a)->sort = tmp->sort;
+	// 	(*st_a)->order =tmp->order;
+	// 	(*st_a)->size = tmp->size;
+	// }
+	// else
 		if(i == 1)
 		{
 			printf("я тут!\n");
@@ -174,16 +174,19 @@ void ft_push_a(t_list **st_a, t_list **st_b, int i)//pa
 		}
 		else
 		{
-			push_front(tmp->value, *st_a);
-			tmp_a = (*st_a);
+			tmp_a = push_front(tmp->value, *st_a);
+
 			//записать pa массив
 		}
 		tmp_a->count += 1;
 		tmp_a->sort = tmp->sort;
-		tmp_a->order =tmp->order;
+		tmp_a->order = tmp->order;
 		tmp_a->size = tmp->size;
-	}
-	ft_pop_front(&(*st_b));
+
+		if(i == 1)
+			tmp_a = head;
+		*st_a = tmp_a;
+		*st_b = ft_pop_front(&(*st_b));
 	}
 
 void ft_push_b(t_list **st_a, t_list **st_b)//pb

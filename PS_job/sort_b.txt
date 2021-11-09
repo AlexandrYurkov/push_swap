@@ -1,0 +1,33 @@
+void ft_sort_stack_b(t_ps *main_struct)
+{
+	int max, i;
+	t_list *tmp;
+
+	tmp = main_struct->st_b;
+	max = main_struct->mid;
+	main_struct->mid = ((max - main_struct->next_elem) / 2) + main_struct->next_elem;
+	printf("\n|mid = %d|\n", max);
+	i = count_check(tmp);
+	if (main_struct->mid > tmp->order)
+	{
+		if (tmp->order == main_struct->next_elem)
+		{
+			//ft_push_a(&main_struct->st_a, &tmp, 1);
+			printf("\n%zu", tmp->order);
+			main_struct->next_elem = main_struct->next_elem + 1;
+		}
+		//ft_push_a(&main_struct->st_a, &tmp, 0);
+	}
+	else
+	{
+		tmp->sort = tmp->sort + 1;
+		do_ra(&tmp);
+	}
+	main_struct->st_b = tmp;
+	printf("%d\n", i);
+	// if (i)
+	// 	//ft_sort_stack_b(main_struct);
+	// else
+		return;
+	
+}
