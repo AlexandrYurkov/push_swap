@@ -165,14 +165,14 @@ void ft_push_a(t_list **st_a, t_list **st_b, int i)//pa
 	// 	(*st_a)->size = tmp->size;
 	// }
 	// else
-		if(i == 1)
-		{
-			printf("я тут!\n");
-			push_back(tmp->value, *st_a);
-			tmp_a = stack_top(*st_a);
-			//записать ra + pa массив
-		}
-		else
+		// if(i == 1)
+		// {
+		// 	printf("я тут!\n");
+		// 	push_back(tmp->value, *st_a);
+		// 	tmp_a = stack_top(*st_a);
+		// 	//записать ra + pa массив
+		// }
+		// else
 		{
 			tmp_a = push_front(tmp->value, *st_a);
 
@@ -183,8 +183,8 @@ void ft_push_a(t_list **st_a, t_list **st_b, int i)//pa
 		tmp_a->order = tmp->order;
 		tmp_a->size = tmp->size;
 
-		if(i == 1)
-			tmp_a = head;
+		// if(i == 1)
+		// 	tmp_a = head;
 		*st_a = tmp_a;
 		*st_b = ft_pop_front(&(*st_b));
 	}

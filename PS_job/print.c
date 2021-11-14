@@ -7,14 +7,20 @@ void ft_print(t_ps *main_struct)
     printf("\n");
     while (tmp)
     {
-         printf("\nstack_a: value = %d, order = %zu| size = %zu|  |sort = %d| |count = %d|", tmp->value, tmp->order, tmp->size, tmp->sort, tmp->count);
+        printf("\nstack_a: value = %d, order = %zu| size = %zu|  |sort = %d| |count = %d|", tmp->value, tmp->order, tmp->size, tmp->sort, tmp->count);
         tmp = tmp->next;
     }
     printf("\n");
-    tmp = main_struct->st_b;
-    while (tmp)
+    tmp = NULL;
+    if (main_struct->st_b)
     {
-        printf("\nstack_b: value = %d, order = %zu| size = %zu|  |sort = %d| |count = %d|", tmp->value, tmp->order, tmp->size, tmp->sort, tmp->count);
-        tmp = tmp->next;
+        tmp = main_struct->st_b;
+        while (tmp)
+        {
+            printf("\nstack_b: value = %d, order = %zu| size = %zu|  |sort = %d| |count = %d|", tmp->value, tmp->order, tmp->size, tmp->sort, tmp->count);
+            tmp = tmp->next;
+        }
     }
+    else
+        printf("\nстек Б пуст!))))");
 }

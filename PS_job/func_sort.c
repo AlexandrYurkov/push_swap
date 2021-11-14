@@ -113,8 +113,7 @@ void ft_sort_stack_b(t_ps *main_struct)
 	//-3 1 0 3 4  2| \ / \  7 9 12 14
 	while (tmp)
 	{
-		max = max_elem(tmp);
-		mid_b = ((max - main_struct->next_elem) / 2) + main_struct->next_elem;//5
+		mid_b = max_elem(tmp)/2 + main_struct->next_elem;
 		
 		if (mid_b < tmp->order)
 		{
@@ -132,7 +131,7 @@ void ft_sort_stack_b(t_ps *main_struct)
 			//printf("\n|else -> value = %d| |order = %zu|", tmp->value, tmp->order);
 			if ((int)tmp->order == main_struct->next_elem)
 			{
-				ft_push_a(&main_struct->st_a, &tmp, 1);
+				ft_push_a(&main_struct->st_a, &tmp, 0);
 				//printf("\n|%zu| next_elen = %d", tmp->order, main_struct->next_elem);
 				main_struct->next_elem = main_struct->next_elem + 1;
 			}
@@ -145,4 +144,23 @@ void ft_sort_stack_b(t_ps *main_struct)
 	}
 
 	//ft_free_list(&main_struct->st_b);
+}
+void sort_finsh(t_ps *main_struct)
+{
+	t_list *tmp_a;
+	t_list *tmp_b;
+
+	tmp_a = main_struct->st_a;
+
+	while (tmp_a->sort > 0)
+	{
+		ft_push_b(&tmp_a, &main_struct->st_b);
+		tmp_b = stack_top(main_struct->st_b);
+	}
+	while (tmp_b->prev)
+	{
+		tmp_b = tmp_b->prev;
+	}
+	main_struct->st_b = tmp_b;
+	main_struct->st_a = tmp_a;
 }

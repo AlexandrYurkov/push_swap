@@ -16,14 +16,17 @@ int max_elem(t_list *check)
 {
     t_list *tmp;
     int i;
+    int j;
     
     tmp = check;
     i = 0;
+    j = 0;
     while (tmp)
     {
-        if(tmp->order > i)
-            i = (int)tmp->order;
+        i += (int)tmp->order;
         tmp = tmp->next;
+        j++;
     }
+    i = i/j;
     return(i);
 }

@@ -40,7 +40,7 @@ void ft_pop_back(t_list **check);
 t_ps *ft_stuct_init(t_ps *main_struct, t_list **check);
 void ft_push_b(t_list **st_a, t_list **st_b);
 void ft_push_a(t_list **st_a, t_list **st_b, int i);
-void ft_free_list(t_list **check);
+void ft_free_list(t_ps **frame);
 // написать функцию очистки листов.
 void ft_one_sort(t_ps *main_struct);
 t_list	*ft_pop_front(t_list **check);
@@ -50,5 +50,6 @@ int count_check (t_list *check);
 void ft_print(t_ps *main_struct); // незабыть перепесать.
 void ft_sort_stack_b(t_ps *main_struct);
 int max_elem(t_list *check);
+void sort_finsh(t_ps *main_struct);
 
 #endif
