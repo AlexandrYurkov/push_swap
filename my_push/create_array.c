@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	create_array(int (**arr)(t_stack **, t_stack **))
+void	create_array(int (**arr)(t_stack **, t_stack **)) // созндание массива команд
 {
 	arr[SA] = sa;
 	arr[SB] = sb;

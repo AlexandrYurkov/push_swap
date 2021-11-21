@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	sw(int *a, int *b)
+void	sw(int *a, int *b) // переименовать в swap_point
 {
 	int	c;
 
@@ -35,7 +35,7 @@ void	fill_order(int	**links, int size)
 	}
 }
 
-void	selection_sort(int *array, int **links, int size)
+void	selection_sort(int *array, int **links, int size) //предсортировка (пузырьком)
 {
 	int	i;
 	int	j;
@@ -58,16 +58,17 @@ void	selection_sort(int *array, int **links, int size)
 	}
 }
 
-void	sort(t_stack *stack, int size)
+void	sort(t_stack *stack, int size) // переименовать в предсортировку
 {
 	int	*array;
 	int	**links;
 
 	array = malloc(sizeof(int) * size);
 	links = malloc(sizeof(int *) * size);
-	fill_array(array, links, stack);
-	selection_sort(array, links, size);
-	fill_order(links, size);
+	fill_array(array, links, stack); // заполнение массива
+	selection_sort(array, links, size); // предсортировка
+	fill_order(links, size); //заполнение ордер
 	free(array);
 	free(links);
+	
 }

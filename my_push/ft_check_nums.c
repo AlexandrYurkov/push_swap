@@ -18,7 +18,7 @@ int	ft_check_nums(char *argv, t_stack *a, int *num)
 	*num = ft_atoi(argv);
 	if ((*num == 0 && argv[1] != '\0') || (*num == -1 && argv[2] != '\0'))
 		return (0);
-	while (a)
+	while (a)//проверка на дубликаты
 	{
 		if (*num == a->content)
 			return (0);
