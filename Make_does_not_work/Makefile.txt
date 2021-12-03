@@ -2,11 +2,13 @@
 # BONUS_NAME	=	checker
 SOURCE	=	check_stack.c error_free.c ft_swap_list.c init_stack.c \
 			mini_sort.c pre_sort.c push_swap.c push.c reverse_rotate.c \
-			rotate.c stack_sort.c upgrede_instr.c check_value.c
+			rotate.c stack_sort.c upgrede_instr.c check_value.c init_enum.c \
+			ft_list_add_back.c ft_list_add_front.c ft_list_back.c ft_list_del_next.c \
+			ft_list_delete.c ft_list_free.c ft_list_last.c ft_list_new.c ft_list_size.c 
 
 OBJECTS	=	${SOURCE:.c=.o}
 
-NAME	=   PS
+NAME	=   test
 
 HEADER  =   push_swap.h libft/libft.h
 
@@ -16,16 +18,15 @@ AR		=	ar rcs
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-%.o: %.c ${HEADER}
-			gcc  -Ilibft -c $< -o ${<:.c=.o}
+all:		${NAME}
 
 ${NAME}:	${OBJECTS}
 			make -C libft
-			cp libft/libft.a $(NAME)
+			gcc libft/libft.a $(NAME)
 			${AR} ${NAME} ${OBJECTS} 
 
-
-all:		${NAME}
+%.o: %.c ${HEADER}
+			gcc  -Ilibft -c $< -o $@
 
 clean:
 			make clean -C libft
